@@ -1,0 +1,9 @@
+Things to add:
+0. Put into github
+1. Image of hangman
+2. Use an actual dictionary
+3. Make a log in system that:
+    - asks for and store username and password
+    - records each games' word and score (no. attempts)
+4. Make an algorithm that measures the difficulty of each word
+5. Categorise words by difficulty, allow the user to choose their level

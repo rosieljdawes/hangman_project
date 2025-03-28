@@ -1,0 +1,11 @@
+computer
+happy
+disk
+job
+coffee
+welcome
+library
+table
+desk
+tea
+task
