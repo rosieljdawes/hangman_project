@@ -1,17 +1,21 @@
 import random
-
+from english_words import get_english_words_set
 import os
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-WORD_FILE = os.path.join(SCRIPT_DIR, "data", "word_list.txt")
+#SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+#WORD_FILE = os.path.join(SCRIPT_DIR, "data", "word_list.txt")
 
-try:
-    with open(WORD_FILE) as f:
-        words = [line.strip() for line in f]
-    #print("Words loaded successfully!")
-except FileNotFoundError:
-    print(f"Error: File not found at {WORD_FILE}")
-    print("Directory contents:", os.listdir(SCRIPT_DIR))
+#try:
+#    with open(WORD_FILE) as f:
+#        words = [line.strip() for line in f]
+#    #print("Words loaded successfully!")
+#except FileNotFoundError:
+#    print(f"Error: File not found at {WORD_FILE}")
+#    print("Directory contents:", os.listdir(SCRIPT_DIR))
+
+
+words = list(get_english_words_set(['web2'], lower=True))
+secret_word = random.choice([w for w in words if len(w) > 4])
 
 # list of words, parameters for the game
 max_wrong_attempts = 6
