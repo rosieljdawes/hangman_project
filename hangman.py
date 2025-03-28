@@ -1,24 +1,89 @@
 import random
-word_list = []
-file = open("word_list.txt")
-for word in file:
-    word_list.append(word.strip())
-file.close()
 
-print(f"{word_list}")
+import os
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+WORD_FILE = os.path.join(SCRIPT_DIR, "data", "word_list.txt")
+
+try:
+    with open(WORD_FILE) as f:
+        words = [line.strip() for line in f]
+    #print("Words loaded successfully!")
+except FileNotFoundError:
+    print(f"Error: File not found at {WORD_FILE}")
+    print("Directory contents:", os.listdir(SCRIPT_DIR))
 
 # list of words, parameters for the game
-max_attempts = 6
+max_wrong_attempts = 6
 incorrect_guesses = 0
 guessed_letters = []
-secret_word = random.choice(word_list)
+secret_word = random.choice(words)
 hidden_word = ["_"] * len(secret_word)
 
+image_list = [
+    """
+    +---+
+    |   |
+        |
+        |
+        |
+        |
+    =========""",
+    """
+    +---+
+    |   |
+    O   |
+        |
+        |
+        |
+    =========""",
+    """
+    +---+
+    |   |
+    O   |
+    |   |
+        |
+        |
+    =========""",
+    """
+    +---+
+    |   |
+    O   |
+   /|   |
+        |
+        |
+    =========""",
+    """
+    +---+
+    |   |
+    O   |
+   /|\  |
+        |
+        |
+    =========""",
+    """
+    +---+
+    |   |
+    O   |
+   /|\  |
+   /    |
+        |
+    =========""",
+    """
+    +---+
+    |   |
+    O   |
+   /|\  |
+   / \  |
+        |
+    ========="""]
+
 print("Welcome to my shit game of Hangman.")
+print(image_list[0])
 print("Current word: " + " ".join(hidden_word))
 
 
-while "_" in hidden_word and incorrect_guesses < max_attempts:
+while "_" in hidden_word and incorrect_guesses < max_wrong_attempts:
     guess = input("Guess a letter: ").lower()
 
     if len(guess) != 1 or not guess.isalpha():
@@ -42,7 +107,8 @@ while "_" in hidden_word and incorrect_guesses < max_attempts:
 
     if not found:
         incorrect_guesses += 1
-        print(f"Sorry, {guess.upper()} is not in the word, guess again. Tries left: {max_attempts - incorrect_guesses}.")
+        print(image_list[incorrect_guesses])
+        print(f"Sorry, {guess.upper()} is not in the word, guess again. Tries left: {max_wrong_attempts - incorrect_guesses}.")
 
     print("Updated word: " + " ".join(hidden_word))
 
@@ -50,6 +116,6 @@ if "_" not in hidden_word:
     print(f"You won! The word is '{secret_word}'.")
 else:
     print(f"Too many guesses, You lose! The word is '{secret_word}'.")
- 
+
    
     
