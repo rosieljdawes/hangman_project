@@ -1,29 +1,10 @@
 Things to add:
-0. Put into github
-1. Image of hangman
-2. Use an actual dictionary
-3. Make a log in system that:
+1. reorganise: make functions file, config file 
+2. make a login system 
     - asks for and store username and password
-    - records each games' word and score (no. attempts)
-4. Make an algorithm that measures the difficulty of each word
-5. Categorise words by difficulty, allow the user to choose their level
-
-
-Difficuty system 
-4 levels:
-easy (4-7 letters, no hard letteres (x, z, q), top 1000 frequency)
-medium(5-9 letters, max 1 hard letter (x, z, q), top 3000 frequency)
-hard(7-10 letters, any letters, 3000+ frequency scale)
-expert(10+ letters, 5000+ frequency scale)
-
-Things to make:
-
-function to filter for no. letters:
-
-function to filter for had letters:
-
-function to filter for frequency:
-easy_words = filter_words_by_frequency(all_words, max_rank=1000)
+    - records each games' word and score 
+3. Make an algorithm that gives a score (eg. ech level has a number * no of remaining tries?)
+4. Host online (how would that work? user interface?)
 
 thoughts!!!
 could use this word filtering to filter chinese news trasncriptions for frequently used words and phrases
