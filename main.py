@@ -52,7 +52,7 @@ if "_" not in hidden_word:
     score = calculate_score(DIFFICULTY_CONFIG[difficulty]['difficulty_score'], incorrect_guesses)
     print(f"You won! Score: {score} (Word: '{secret_word}')")
 else:
-    score = 0  # Or calculate_score(...) if you want partial credit
+    score = 0  
     print(f"Game over! Score: {score} (Word: '{secret_word}')")
    
     

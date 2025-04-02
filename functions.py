@@ -5,7 +5,7 @@ import pandas as pd
 
 #load frequency data
 def load_frequency_data():
-    # Calculate the correct path regardless of where you run the script
+    
     script_dir = os.path.dirname(os.path.abspath(__file__))
     csv_path = os.path.join(script_dir, 'data', 'unigram_freq.csv')
     
@@ -27,16 +27,14 @@ def frequency_filter(words, max_rank, freq_data):
     return [w for w in words if freq_data.get(w, float('inf')) <= max_rank]
 
 def get_secret_word(all_words, difficulty, freq_data):
-    """Filter words in real-time for the chosen difficulty"""
     config = DIFFICULTY_CONFIG[difficulty]
-    
-    # Apply filters sequentially
+
     words = length_filter(all_words, *config['length'])
     words = hard_letter_filter(words, config['hard_letters'])
     words = frequency_filter(words, config['max_rank'], freq_data)
     
-    if not words:  # Fallback if no words match
-        words = ["default"]  # Default words
+    if not words:  
+        words = ["default"] 
     
     return random.choice(words)
 def select_difficulty():
