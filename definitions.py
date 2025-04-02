@@ -1,4 +1,4 @@
-from config import DIFFICULTY_CONFIG
+from config import DIFFICULTY_CONFIG, MAX_WRONG_ATTEMPTS
 import os
 import random
 import pandas as pd
@@ -49,3 +49,8 @@ def select_difficulty():
         if choice in DIFFICULTY_CONFIG:
             return choice
         print("Invalid choice")
+
+def calculate_score(difficulty_score, incorrect_guesses, total_guesses=MAX_WRONG_ATTEMPTS):
+    remaining_attempts = total_guesses - incorrect_guesses
+    score = remaining_attempts * difficulty_score * 10
+    return max(0, score)

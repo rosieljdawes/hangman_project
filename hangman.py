@@ -4,7 +4,8 @@ import pandas as pd
 import os
 from definitions import load_frequency_data, length_filter, hard_letter_filter
 from definitions import get_secret_word, select_difficulty, frequency_filter
-from config import MAX_WRONG_ATTEMPTS, IMAGE_LIST
+from definitions import calculate_score
+from config import MAX_WRONG_ATTEMPTS, IMAGE_LIST, DIFFICULTY_CONFIG
 
 print("Welcome to my shit game of Hangman.")
 freq_data = load_frequency_data()
@@ -48,9 +49,10 @@ while "_" in hidden_word and incorrect_guesses < MAX_WRONG_ATTEMPTS:
     print("Updated word: " + " ".join(hidden_word))
 
 if "_" not in hidden_word:
-    print(f"You won! The word is '{secret_word}'.")
+    score = calculate_score(DIFFICULTY_CONFIG[difficulty]['difficulty_score'], incorrect_guesses)
+    print(f"You won! Score: {score} (Word: '{secret_word}')")
 else:
-    print(f"Too many guesses, You lose! The word is '{secret_word}'.")
-
+    score = 0  # Or calculate_score(...) if you want partial credit
+    print(f"Game over! Score: {score} (Word: '{secret_word}')")
    
     
