@@ -2,9 +2,9 @@ import random
 from english_words import get_english_words_set
 import pandas as pd
 import os
-from definitions import load_frequency_data, length_filter, hard_letter_filter
-from definitions import get_secret_word, select_difficulty, frequency_filter
-from definitions import calculate_score
+from functions import load_frequency_data, length_filter, hard_letter_filter
+from functions import get_secret_word, select_difficulty, frequency_filter
+from functions import calculate_score
 from config import MAX_WRONG_ATTEMPTS, IMAGE_LIST, DIFFICULTY_CONFIG
 
 print("Welcome to my shit game of Hangman.")
